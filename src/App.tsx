@@ -6,10 +6,14 @@ import { useState } from 'react';
 import { Geners } from "./hooks/useGennrList";
 
 
+
+
+
 function App() {
 
 
-  const [selectedGenre,setSelectedGenre]=useState<Geners|null>(null)
+  const [selectedGenre,setSelectedGenre]=useState<Geners|null>(null);
+  const [selectedPlarform,setSelectedPlatform]=useState<PlatformItem|null>(null)
   return <Grid templateAreas={{
     base:`"nav" "main"`,
     lg:`"nav nav" "asid main"`
@@ -23,18 +27,17 @@ function App() {
       <NavBar />
     </GridItem>
       <Show above="lg">
-       
-
-        
-        <GenerList onSelectGenre={(genre)=>setSelectedGenre(genre)}/>
-       
+        <GenerList selectedGenre={selectedGenre} onSelectGenre={(genre)=>setSelectedGenre(genre)}/>
       </Show>
       <GridItem area="main">
-        <GameGrid selectedGenre={selectedGenre}/>
+        <Platform selectedPlarform={selectedPlarform}  onSelectedPlatform={(platform)=>setSelectedPlatform(platform)}/>
+        <GameGrid selectedGenre={selectedGenre} selectedPlarform={selectedPlarform}/>
       </GridItem>
 
   </Grid>
  
 }
+import { PlatformItem } from "./hooks/usePlatform";
+import { Platform } from "./components/Platform";
 
 export default App

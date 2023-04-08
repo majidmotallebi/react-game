@@ -1,5 +1,6 @@
 import useData from "./useData";
 import { Geners } from './useGennrList';
+import { PlatformItem } from './usePlatform';
 
 export interface Platform{
     id:number,
@@ -15,5 +16,12 @@ export interface Game{
         metacritic:number
     }
    
-const useGames=(selectedGenre:Geners | null)=> useData<Game>('/games',{params:{genres:selectedGenre?.id}},[selectedGenre?.id]);
+const useGames=(
+    selectedGenre:Geners | null,
+    selectedPlarform:PlatformItem|null)=> useData<Game>('/games',
+        {params:
+            {genres:selectedGenre?.id,
+                platforms:selectedPlarform?.id}},
+                [selectedGenre?.id,selectedPlarform?.id]
+                );
 export default useGames;

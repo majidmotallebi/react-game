@@ -6,12 +6,13 @@ import { Image ,Text} from '@chakra-ui/react';
 import getImageCroppedUrl from '../assets/services/image-url';
 
 interface Props{
-  onSelectGenre : (genre:Geners) => void
+  onSelectGenre : (genre:Geners) => void,
+  selectedGenre:Geners|null
 }
 
 
 
-export const GenerList = ({onSelectGenre}:Props) => {
+export const GenerList = ({selectedGenre,onSelectGenre}:Props) => {
 
     const {error,data,isLoading }= useGennrList();
 
@@ -25,7 +26,7 @@ export const GenerList = ({onSelectGenre}:Props) => {
         {data.map((gener)=><ListItem key={gener.id}>
           <HStack>
            <Image boxSize='30px' borderRadius='8px' src={getImageCroppedUrl(gener.image_background)} />
-            <Button fontSize='lg' onClick={()=>onSelectGenre(gener)} variant='link'>{gener.name}</Button>
+            <Button fontSize='lg' fontWeight={gener.id === selectedGenre?.id ? 'bold':'normal'} onClick={()=>onSelectGenre(gener)} variant='link'>{gener.name}</Button>
           </HStack>
           </ListItem>)}
     </List>
