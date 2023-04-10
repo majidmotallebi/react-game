@@ -6,7 +6,10 @@ export const GameCardSkeleton = () => {
     <Card width='300px' borderRadius={10} overflow='hidden'>
         <Skeleton height='200px'>
       <CardBody>
-        <SkeletonText/>
+        <SkeletonText> 
+
+          
+        </SkeletonText>
 
       </CardBody>
         </Skeleton>

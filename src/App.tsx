@@ -4,16 +4,22 @@ import { GenerList } from "./components/GenerList"
 import { NavBar } from "./components/NavBar"
 import { useState } from 'react';
 import { Geners } from "./hooks/useGennrList";
+import { PlatformItem } from "./hooks/usePlatform";
+import { Platform } from "./components/Platform";
 
 
-
-
+ export interface gameQuery{
+  gener:Geners|null;
+  platform:PlatformItem|null;
+}
 
 function App() {
 
 
-  const [selectedGenre,setSelectedGenre]=useState<Geners|null>(null);
-  const [selectedPlarform,setSelectedPlatform]=useState<PlatformItem|null>(null)
+  // const [selectedGenre,setSelectedGenre]=useState<Geners|null>(null);
+  // const [selectedPlarform,setSelectedPlatform]=useState<PlatformItem|null>(null)
+  const [gameQuery,setGameQuery] = useState<gameQuery>({} as gameQuery);
+  
   return <Grid templateAreas={{
     base:`"nav" "main"`,
     lg:`"nav nav" "asid main"`
@@ -27,17 +33,16 @@ function App() {
       <NavBar />
     </GridItem>
       <Show above="lg">
-        <GenerList selectedGenre={selectedGenre} onSelectGenre={(genre)=>setSelectedGenre(genre)}/>
+        <GenerList selectedGenre={gameQuery.gener} onSelectGenre={(gener)=>setGameQuery({...gameQuery, gener})}/>
       </Show>
       <GridItem area="main">
-        <Platform selectedPlarform={selectedPlarform}  onSelectedPlatform={(platform)=>setSelectedPlatform(platform)}/>
-        <GameGrid selectedGenre={selectedGenre} selectedPlarform={selectedPlarform}/>
+        <Platform selectedPlarform={gameQuery.platform}  onSelectedPlatform={(platform)=>setGameQuery({...gameQuery,platform})}/>
+        <GameGrid gameQuery={gameQuery}/>
       </GridItem>
 
   </Grid>
  
 }
-import { PlatformItem } from "./hooks/usePlatform";
-import { Platform } from "./components/Platform";
+
 
 export default App
