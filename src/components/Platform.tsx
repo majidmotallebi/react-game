@@ -14,7 +14,7 @@ export const Platform = ({selectedPlarform,onSelectedPlatform}:Props) => {
     <Menu>
         <MenuButton as={Button} rightIcon={<BsChevronDown/>}>{selectedPlarform?.name || 'Platform'}</MenuButton>
         <MenuList>
-            {data.map((platform)=><MenuItem onClick={()=>onSelectedPlatform(platform)}>{platform.name}</MenuItem>)}
+            {data.map((platform)=><MenuItem key={platform.id} onClick={()=>onSelectedPlatform(platform)}>{platform.name}</MenuItem>)}
            
         </MenuList>
     </Menu>
