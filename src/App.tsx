@@ -6,8 +6,9 @@ import { useState } from 'react';
 import { Geners } from "./hooks/useGennrList";
 import { PlatformItem } from "./hooks/usePlatform";
 import { Platform } from "./components/Platform";
-import { SortSelector } from "./components/sortSelector";
-import { GameHeading } from "./components/gameHeading";
+
+import { SortSelector } from "./components/SortSelector";
+import { GameHeading } from "./components/GameHeading";
 
 
 

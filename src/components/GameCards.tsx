@@ -1,9 +1,9 @@
 import { Card, CardBody, Heading, HStack, Image,Text } from '@chakra-ui/react'
 import { Game } from '../hooks/useGames'
-import { Metacritic } from './metacritic'
 import { PlatformListIcons } from './PlatformListIcons'
 import getImageCroppedUrl from '../assets/services/image-url';
 import { Emoji } from './Emoji';
+import { Metacritic } from './Metacritic';
 
 
 interface Props{
