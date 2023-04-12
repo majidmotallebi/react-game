@@ -22,7 +22,9 @@ const useGames=(
         {params:
             {genres:gameQuery.gener?.id,
                 platforms:gameQuery.platform?.id,
-                ordering:gameQuery.sortOrder}},
+                ordering:gameQuery.sortOrder,
+                search:gameQuery.searchText
+            }},
                 [gameQuery]
                 );
 export default useGames;
