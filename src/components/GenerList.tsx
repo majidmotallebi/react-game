@@ -22,7 +22,7 @@ export const GenerList = ({selectedGenre,onSelectGenre}:Props) => {
     <>
       {/* <Heading fontSize='2xl' marginBottom={3}>Geners</Heading> */}
     <List paddingY={4} paddingX={2}>
-        {data.map((gener)=><ListItem key={gener.id}>
+        {data?.results.map((gener)=><ListItem key={gener.id}>
           <HStack>
            <Image objectFit='cover' marginY={1} boxSize='30px' borderRadius='8px' src={getImageCroppedUrl(gener.image_background)} />
             <Button textAlign='left' whiteSpace='normal' fontSize='lg' fontWeight={gener.id === selectedGenre?.id ? 'bold':'normal'} onClick={()=>onSelectGenre(gener)} variant='link'>{gener.name}</Button>
