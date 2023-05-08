@@ -14,8 +14,8 @@ import { GameHeading } from "./components/GameHeading";
 
 
  export interface gameQuery{
-  gener:Geners|null;
-  platform:PlatformItem|null;
+  generId?:number;
+  platformId?:number;
   sortOrder:string;
   searchText:string;
 }
@@ -40,7 +40,7 @@ function App() {
       <NavBar  onSearch={(searchText)=>setGameQuery({...gameQuery,searchText})}/>
     </GridItem>
       <Show above="lg">
-        <GenerList selectedGenre={gameQuery.gener} onSelectGenre={(gener)=>setGameQuery({...gameQuery, gener})}/>
+        <GenerList selectedGenreId={gameQuery.generId} onSelectGenre={(gener)=>setGameQuery({...gameQuery, generId: gener.id})}/>
       </Show>
       <GridItem area="main">
 
@@ -48,7 +48,8 @@ function App() {
             <GameHeading gameQuery={gameQuery} />
             <Flex  marginBottom={5}>
               <Box marginRight={2}>
-              <Platform selectedPlarform={gameQuery.platform}  onSelectedPlatform={(platform)=>setGameQuery({...gameQuery,platform})}/>
+              <Platform selectedPlarformId={gameQuery.platformId} 
+                  onSelectedPlatform={(platform)=>setGameQuery({...gameQuery,platformId:platform.id})}/>
               </Box>
               <SortSelector selectedOrder={gameQuery.sortOrder} onSortOrder={(sortOrder)=>setGameQuery({...gameQuery,sortOrder})} />
             </Flex>
