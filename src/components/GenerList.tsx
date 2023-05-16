@@ -2,17 +2,16 @@ import { Button, Heading, HStack, List, ListItem, Spinner } from '@chakra-ui/rea
 import { Geners, useGennrList } from '../hooks/useGennrList';
 import { Image} from '@chakra-ui/react';
 import getImageCroppedUrl from '../assets/services/image-url';
-
-interface Props{
-  onSelectGenre : (genre:Geners) => void,
-  selectedGenreId?:number
-}
+import useGameQueryStore from '../store';
 
 
 
-export const GenerList = ({selectedGenreId,onSelectGenre}:Props) => {
+
+export const GenerList = () => {
 
     const {error,data,isLoading }= useGennrList();
+    const selectedGenerId = useGameQueryStore(s=>s.gameQuery.generId);
+    const setGenerId= useGameQueryStore(s=>s.setGenerId)
 
     if(error) return null;
 
@@ -25,7 +24,7 @@ export const GenerList = ({selectedGenreId,onSelectGenre}:Props) => {
         {data?.results.map((gener)=><ListItem key={gener.id}>
           <HStack>
            <Image objectFit='cover' marginY={1} boxSize='30px' borderRadius='8px' src={getImageCroppedUrl(gener.image_background)} />
-            <Button textAlign='left' whiteSpace='normal' fontSize='lg' fontWeight={gener.id === selectedGenreId ? 'bold':'normal'} onClick={()=>onSelectGenre(gener)} variant='link'>{gener.name}</Button>
+            <Button textAlign='left' whiteSpace='normal' fontSize='lg' fontWeight={gener.id === selectedGenerId ? 'bold':'normal'} onClick={()=>setGenerId(gener.id)} variant='link'>{gener.name}</Button>
           </HStack>
           </ListItem>)}
     </List>
