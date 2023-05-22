@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import DefinitionItem from '../components/DefinitionItem';
 import ExpandableText from '../components/ExpandableText';
 import GameAttributes from '../components/GameAttributes';
+import GameTrailer from '../components/GameTrailer';
 import { Metacritic } from '../components/Metacritic';
 import useGame from '../hooks/useGame';
 
@@ -19,9 +20,8 @@ import useGame from '../hooks/useGame';
      <>
      <Heading>{game.name}</Heading>
     <ExpandableText>{game.description_raw}</ExpandableText>
-
      <GameAttributes game={game} />
-      
+      <GameTrailer gameId={game.id} />
     </>
    
   )
