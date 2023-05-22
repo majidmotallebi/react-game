@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import DefinitionItem from '../components/DefinitionItem';
 import ExpandableText from '../components/ExpandableText';
 import GameAttributes from '../components/GameAttributes';
+import GameScreenshots from '../components/GameScreenshots';
 import GameTrailer from '../components/GameTrailer';
 import { Metacritic } from '../components/Metacritic';
 import useGame from '../hooks/useGame';
@@ -22,6 +23,7 @@ import useGame from '../hooks/useGame';
     <ExpandableText>{game.description_raw}</ExpandableText>
      <GameAttributes game={game} />
       <GameTrailer gameId={game.id} />
+      <GameScreenshots gameId={game.id}/>
     </>
    
   )
