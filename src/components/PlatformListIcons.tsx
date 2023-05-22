@@ -3,7 +3,7 @@ import {MdPhoneIphone} from 'react-icons/md'
 import {SiNintendo} from 'react-icons/si'
 import {BsGlobe} from 'react-icons/bs'
 import { Icon } from '@chakra-ui/react'
-import { PlatformItem } from '../hooks/usePlatform'
+import { PlatformItem } from "../hooks/PlatformItem"
 import { IconType } from 'react-icons/lib'
 import { HStack } from '@chakra-ui/react';
 

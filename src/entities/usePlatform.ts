@@ -4,16 +4,10 @@ import ApiClient from '../assets/services/api-client';
 import { fetchDataRespone } from "../assets/services/api-client";
 import platforms from '../data/platforms';
 import ms from 'ms';
+import { PlatformItem } from '../hooks/PlatformItem';
 
 
 const apiClient = new ApiClient<PlatformItem>('/plaforms/lists/parents');
-
-export interface PlatformItem{
-         id:number,
-        name:string,
-        slug:string
-       
-    }
 
 export const usePlatform = () => useQuery({
     queryKey: ['platforms'],

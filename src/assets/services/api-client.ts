@@ -23,5 +23,11 @@ class ApiClient<T>{
       return  axiosInstant.get<fetchDataRespone<T>>(this.endpoint,config)
       .then(res=>res.data);
      }
+
+     get=(id:number | string)=>{
+        return axiosInstant.get<T>(this.endpoint + '/'+ id)
+        .then(res=>res.data)
+     }
+
 }
 export default ApiClient;
